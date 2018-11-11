@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class BubbleSort {
+public class InsertionSort {
 
 	public static void main(String[] args) {
 		ArrayList<Double> nilai = new ArrayList<Double>();
@@ -19,31 +19,27 @@ public class BubbleSort {
 		nilai.add(12.4);
 		nilai.add(5.53);
 		nilai.add(26.12);
-		
-		System.out.println("Nilai awal : " + nilai.toString());
+		System.out.print("Nilai awal : " + nilai.toString()+"\n");
 		
 		ArrayList<Double> output = sort(nilai);
-		
-		System.out.println("Hasil Sorting : " + output.toString());
+			
+		System.out.println("Hasil Sorting : " + output.toString());	
 		}
 
 		private static ArrayList<Double> sort(ArrayList<Double> data) {
-		int swapped = 1;
-		for(int i=data.size()-1;i>=0 && data.size()-1 >= swapped; i--){
-			swapped = 0;
-			for(int j=0;j<=i-1;j++){
-				if(data.get(j)>data.get(j+1)){
-					double temp = data.get(j);
-					data.set(j, data.get(j+1));
-					data.set((j+1), temp);
-					swapped = 1;
+			for(int i=1;i<=data.size()-1;i++){
+				double v = data.get(i);
+				int j = i;
+				while(j > 0 && data.get(j-1) > v){
+					data.set(j, data.get(j-1));
+					j--;
 				}
+				data.set(j, v);
+				
+				System.out.println("Step ke-"+i+ data.toString());
 			}
-			
-			System.out.println("Step -> "+ data.toString());
-		}
 			return data;
-		}
+
 	}
 
-
+}
